@@ -1,9 +1,6 @@
-import { User } from "./user"
-
-export type LoginInput = { email: string; password: string }
 
 export interface AuthRepository {
-    login(input: LoginInput): Promise<void>
-    me(): Promise<User>
+    login(email: string, password: string): Promise<void>
+    me(): Promise<void>
     logout(): Promise<void>
 }

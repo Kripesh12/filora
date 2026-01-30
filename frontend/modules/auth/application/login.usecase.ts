@@ -1,8 +1,9 @@
-import { AuthRepository, LoginInput } from "../domain/auth.repository";
+import { AuthRepository } from "../domain/auth.repository";
 
 export class LoginUseCase {
     constructor(private repo: AuthRepository) { }
-    execute(input: LoginInput) {
-        return this.repo.login(input)
+    async execute(email: string, password: string) {
+        if (!email || !password) throw new Error("Email and password are required")
+        return await this.repo.login(email, password)
     }
 }
